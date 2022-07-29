@@ -1,2 +1,2 @@
-# simpleCart
+# shoppingCartApplication
 #teste
