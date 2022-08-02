@@ -1,0 +1,3 @@
+2022-07-29 21:36:37 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]SHOPPERS SHOPPERS"; expected "SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+SHOPPERS SHOPPERS [42001-214]
