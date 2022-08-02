@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.erica.model.emum.Gender;
+
 
 @Entity(name ="shoppers")
 public class Shopper implements Serializable {
@@ -20,35 +22,35 @@ public class Shopper implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	Long idShopper;
+	private Long idShopper;
 	
-	@Column(name= "shopper_first_name")
-	String shopperFirstName;
+	@Column(name= "shopper_first_name", nullable = false, length=15)
+	private String shopperFirstName;
 	
-	@Column(name = "shopper_surname")
-	String shopperSurname;
+	@Column(name = "shopper_surname", nullable = false, length=20)
+	private String shopperSurname;
 	
-	@Column(name= "shopper_account_ref")
-	String shopperAccountRef;
+	@Column(name= "shopper_account_ref", nullable = false, length=8, unique=true)
+	private String shopperAccountRef;
 	
-	@Column(name="shopper_email_address")
-	String shopperEmailAddress;
+	@Column(name="shopper_email_address", nullable = false)
+	private String shopperEmailAddress;
 	
 	@Column(name="date_of_birth")
-	LocalDate date_of_birth;
+	private LocalDate date_of_birth;
 	
-	@Column(name= "gender")
-	Character gender;
+	@Column(name= "gender", length=1)
+	private Gender gender;
 	
-	@Column(name= "date_joined")
-	LocalDate dateJoined;
+	@Column(name= "date_joined", nullable = false)
+	private LocalDate dateJoined;
 
 	public Shopper() {
 		
 	}
 
 	public Shopper(String shopperFirstName, String shopperSurname, String shopperAccountRef,
-			String shopperEmailAddress, LocalDate date_of_birth, Character gender, LocalDate dateJoined) {
+			String shopperEmailAddress, LocalDate date_of_birth, Gender gender, LocalDate dateJoined) {
 		this.shopperFirstName = shopperFirstName;
 		this.shopperSurname = shopperSurname;
 		this.shopperAccountRef = shopperAccountRef;
@@ -106,11 +108,11 @@ public class Shopper implements Serializable {
 		this.date_of_birth = date_of_birth;
 	}
 
-	public Character getGender() {
+	public Gender getGender() {
 		return gender;
 	}
 
-	public void setGender(Character gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
