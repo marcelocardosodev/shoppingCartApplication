@@ -1,6 +1,7 @@
 package com.erica.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -37,10 +38,13 @@ public class Shopper implements Serializable {
 	private String shopperEmailAddress;
 	
 	@Column(name="date_of_birth")
-	private LocalDate date_of_birth;
+	private LocalDate dateOfBirth;
 	
 	@Column(name= "gender", length=1)
 	private Gender gender;
+	
+	@Column(name= "bank_balance", precision = 6, scale = 2)
+	private BigDecimal bankBalance;
 	
 	@Column(name= "date_joined", nullable = false)
 	private LocalDate dateJoined;
@@ -49,16 +53,24 @@ public class Shopper implements Serializable {
 		
 	}
 
-	public Shopper(String shopperFirstName, String shopperSurname, String shopperAccountRef,
-			String shopperEmailAddress, LocalDate date_of_birth, Gender gender, LocalDate dateJoined) {
+
+
+	public Shopper(Long idShopper, String shopperFirstName, String shopperSurname, String shopperAccountRef,
+			String shopperEmailAddress, LocalDate dateOfBirth, Gender gender, BigDecimal bankBalance,
+			LocalDate dateJoined) {
+		super();
+		this.idShopper = idShopper;
 		this.shopperFirstName = shopperFirstName;
 		this.shopperSurname = shopperSurname;
 		this.shopperAccountRef = shopperAccountRef;
 		this.shopperEmailAddress = shopperEmailAddress;
-		this.date_of_birth = date_of_birth;
+		this.dateOfBirth = dateOfBirth;
 		this.gender = gender;
+		this.bankBalance = bankBalance;
 		this.dateJoined = dateJoined;
 	}
+
+
 
 	public Long getIdShopper() {
 		return idShopper;
@@ -101,11 +113,11 @@ public class Shopper implements Serializable {
 	}
 
 	public LocalDate getDate_of_birth() {
-		return date_of_birth;
+		return dateOfBirth;
 	}
 
-	public void setDate_of_birth(LocalDate date_of_birth) {
-		this.date_of_birth = date_of_birth;
+	public void setDate_of_birth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public Gender getGender() {
@@ -123,17 +135,18 @@ public class Shopper implements Serializable {
 	public void setDateJoined(LocalDate dateJoined) {
 		this.dateJoined = dateJoined;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+	public BigDecimal getBankBalance() {
+		return bankBalance;
+	}
+
+
+
+	public void setBankBalance(BigDecimal bankBalance) {
+		this.bankBalance = bankBalance;
+	}
 	
 	
 	
