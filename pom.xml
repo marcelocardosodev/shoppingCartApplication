@@ -8,7 +8,7 @@
 		<version>2.7.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.marcelo</groupId>
+	<groupId>br.com.erica</groupId>
 	<artifactId>shoppingCartApplicationn</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>shoppingCartApplicationn</name>
