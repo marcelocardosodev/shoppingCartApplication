@@ -1,56 +1,56 @@
-package com.erica.model;
+package com.erica.model.dto;
 
-import java.io.Serializable;
+import javax.validation.constraints.NotEmpty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.erica.model.Seller;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity(name= "sellers")
-public class Seller implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6851896358613231159L;
+public class SellerDto {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idseller;
+	@JsonProperty("id")
+	private String idseller;
 	
-	@Column(name= "seller_account", unique = true, nullable = false, length = 8)
+	@NotEmpty(message = "Account is required")
+	@JsonProperty("seller_account")
 	private String sellerAccount;
 	
-	@Column(name= "seller_name", nullable = false, length = 20)
+	@NotEmpty(message = "Name is required")
+	@JsonProperty("seller_name")
 	private String sellerName;
 	
-	@Column(name= "seller_address_line1", nullable = false, length = 30)
+	@NotEmpty(message = "Address line one is required")
+	@JsonProperty("seller_address_line1")
 	private String sellerAddressLineOne;
 	
-	@Column(name= "seller_address_line2", nullable = false, length = 30)
+	@NotEmpty(message = "Address line two is required")
+	@JsonProperty("seller_address_line2")
 	private String sellerAddressLineTwo;
 	
-	@Column(name= "seller_address_line3", nullable = false, length = 25)
+	@NotEmpty(message = "Address line three is required")
+	@JsonProperty("seller_address_line3")
 	private String sellerAddressLineThree;
 	
-	@Column(name= "seller_county", nullable = false, length = 20)
+	@NotEmpty(message = "County is required")
+	@JsonProperty("seller_county")
 	private String sellerCounty;
 	
-	@Column(name= "seller_post_code", nullable = false, length = 8)
+	@NotEmpty(message = "Post_code is required")
+	@JsonProperty("seller_post_code")
 	private String sellerPostCode;
 	
-	@Column(name= "seller_email_address", nullable = false, length = 35)
+	@NotEmpty(message = "Email_address is required")
+	@JsonProperty("seller_email_address")
 	private String sellerEmailAddress;
 
-	public Seller() {
+	public SellerDto() {
 		
 	}
 
-	public Seller(String sellerAccount, String sellerName, String sellerAddressLineOne, String sellerAddressLineTwo,
-			String sellerAddressLineThree, String sellerCounty, String sellerPostCode, String sellerEmailAddress) {
-		super();
+	public SellerDto(String idseller, String sellerAccount,	String sellerName, String sellerAddressLineOne,
+			String sellerAddressLineTwo, String sellerAddressLineThree, String sellerCounty,
+			String sellerPostCode, String sellerEmailAddress) {
+		
+		this.idseller = idseller;
 		this.sellerAccount = sellerAccount;
 		this.sellerName = sellerName;
 		this.sellerAddressLineOne = sellerAddressLineOne;
@@ -61,11 +61,25 @@ public class Seller implements Serializable{
 		this.sellerEmailAddress = sellerEmailAddress;
 	}
 
-	public Long getIdseller() {
+	
+	public SellerDto transformToDtop(Seller seller) {
+		
+		var dto = new SellerDto();
+		dto.setIdseller(seller.getIdseller().toString());
+		dto.setsellerAccount(seller.getsellerAccount());
+		dto.setsellerAddressLineOne(seller.getsellerAddressLineOne());
+		dto.setsellerAddressLineTwo(seller.getsellerAddressLineTwo());
+		dto.setsellerCounty(seller.getsellerCounty());
+		dto.setsellerEmailAddress(seller.getsellerEmailAddress());
+		dto.setsellerName(seller.getsellerName());
+		dto.setsellerPostCode(seller.getsellerPostCode());
+		return dto;
+	}
+	public String getIdseller() {
 		return idseller;
 	}
 
-	public void setIdseller(Long idseller) {
+	public void setIdseller(String idseller) {
 		this.idseller = idseller;
 	}
 
@@ -132,5 +146,8 @@ public class Seller implements Serializable{
 	public void setsellerEmailAddress(String sellerEmailAddress) {
 		this.sellerEmailAddress = sellerEmailAddress;
 	}
+	
+	
+	
 
 }
