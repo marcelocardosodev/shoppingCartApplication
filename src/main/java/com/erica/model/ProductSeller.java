@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity(name= "product_sellers")
-public class ProdutSeller implements Serializable{
+public class ProductSeller implements Serializable{
 
 	/**
 	 * 
@@ -31,11 +31,11 @@ public class ProdutSeller implements Serializable{
 	@Column(name= "price", nullable = false, precision = 6, scale = 2)
 	private BigDecimal price;
 
-	public ProdutSeller() {
+	public ProductSeller() {
 		
 	}
 
-	public ProdutSeller(Product produto, Seller seller, BigDecimal price) {
+	public ProductSeller(Product produto, Seller seller, BigDecimal price) {
 		super();
 		this.produto = produto;
 		this.seller = seller;
